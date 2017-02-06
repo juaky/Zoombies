@@ -1,4 +1,5 @@
 import acm.graphics.GImage;
+import acm.graphics.GRectangle;
 import acm.program.GraphicsProgram;
 import java.util.ArrayList;
 import java.util.Random;
@@ -27,7 +28,7 @@ public class Principal extends GraphicsProgram {
 
         Bola tocada=null;
         boolean jugar =true;
-        while(true) {
+        while(jugar) {
             for (Bola mibola : misbolas) {
                 mibola.mover(getWidth(), getHeight());
                 pause(5);
@@ -57,6 +58,30 @@ public class Principal extends GraphicsProgram {
                 }
             if (misbolas.isEmpty()) jugar=false;
         }
+        partidaFinalizada();
+    }
+
+    public void partidaFinalizada(){
+        pause(400);
+        GImage zoombiefinal = new GImage("../images/zoombie.png");
+        add(zoombiefinal,(getWidth()-zoombiefinal.getWidth())/2,(getHeight()-zoombiefinal.getHeight())/2);
+        zoombiefinal.setBounds(0,0,50,50);
+        while (zoombiefinal.getWidth()<getWidth()){
+            zoombiefinal.setBounds(0,0,zoombiefinal.getWidth()+50,zoombiefinal.getHeight()+50);
+            pause(30);
+        }
+
+        //zoombiefinal.scale(-4);
+
+       /* for (int i = 0; i <0 ; i++) {
+            System.out.print("a");
+            zoombiefinal.scale(-10);
+            pause(50);
+        }*/
+       /* for (int i = 0; i <10 ; i++) {
+            zoombiefinal.scale(10);
+            pause(10);
+        }*/
     }
 
 
